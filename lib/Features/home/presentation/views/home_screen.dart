@@ -1,8 +1,11 @@
+import 'package:blind_stick/Core/constance/app_function.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../../../../Core/constance/assets_manager.dart';
 import '../../../../Core/constance/my_colors.dart';
+import '../../../gardian/presentation/views/gardian_screen.dart';
+import '../../../patient/presentation/views/patient_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -70,10 +73,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 width: MediaQuery.of(context).size.width * 0.5,
                 height: MediaQuery.of(context).size.width * 0.13,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    AppFunctions.pushTo(
+                        context: context, screen: const PatientScreen());
+                  },
                   style: ButtonStyle(
                       backgroundColor: MaterialStatePropertyAll(
-                    MyColors.buttonsColor!.withOpacity(0.35),
+                    MyColors.buttonsColor!.withOpacity(0.4),
                   )),
                   child: const Text(
                     'Patient',
@@ -94,10 +100,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 width: MediaQuery.of(context).size.width * 0.5,
                 height: MediaQuery.of(context).size.width * 0.13,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    AppFunctions.pushTo(
+                        context: context, screen: const GardianScreen());
+                  },
                   style: ButtonStyle(
                       backgroundColor: MaterialStatePropertyAll(
-                    MyColors.buttonsColor!.withOpacity(0.35),
+                    MyColors.buttonsColor!.withOpacity(0.4),
                   )),
                   child: const Text(
                     'Gardian',
