@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "737499766174",
+    "firebase_url": "https://blind-stick-fe032-default-rtdb.firebaseio.com",
+    "project_id": "blind-stick-fe032",
+    "storage_bucket": "blind-stick-fe032.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:737499766174:android:3c29fde02835f3789a4a8f",
+        "android_client_info": {
+          "package_name": "com.example.blind_stick"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVPbedGlyUEgtM946Gd6DbUlYSgpNSuMc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
