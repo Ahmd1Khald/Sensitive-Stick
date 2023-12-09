@@ -60,6 +60,12 @@ class _PatientScreenState extends State<PatientScreen> {
     super.initState();
   }
 
+  @override
+  void dispose() {
+    assetsAudioPlayer.dispose();
+    super.dispose();
+  }
+
   final assetsAudioPlayer = AssetsAudioPlayer();
 
   Color ballEffectColor = Colors.blue;
