@@ -15,9 +15,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  // final databaseReference =
-  //     FirebaseDatabase.instance.ref('Embedded/Action needed/value');
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
