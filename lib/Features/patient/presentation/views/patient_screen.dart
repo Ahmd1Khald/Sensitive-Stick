@@ -70,14 +70,38 @@ class _PatientScreenState extends State<PatientScreen> {
 
   Color ballEffectColor = Colors.blue;
 
-  Future<void> playAlert() async {
+  Future<void> playFrontAlert() async {
     try {
       // Load the audio file from assets
-      await assetsAudioPlayer
-          .open(
-            Audio("assets/audios/security-alarm-80493.mp3"),
-          )
-          .then((value) {});
+      await assetsAudioPlayer.open(
+        Audio("assets/audios/front.mp3"),
+      );
+    } catch (e) {
+      print('Error: $e');
+    }
+  }
+
+  Future<void> playRightAlert() async {
+    try {
+      await assetsAudioPlayer.open(Audio("assets/audios/right.mp3"));
+
+      assetsAudioPlayer.play();
+
+      // Listen for playback completion and play again
+
+      // Load the audio file from assets
+    } catch (e) {
+      print('Error: $e');
+    }
+  }
+
+  Future<void> playLeftAlert() async {
+    try {
+      // Load the audio file from assets
+
+      await assetsAudioPlayer.open(
+        Audio("assets/audios/left.mp3"),
+      );
     } catch (e) {
       print('Error: $e');
     }
@@ -85,6 +109,7 @@ class _PatientScreenState extends State<PatientScreen> {
 
   Future<void> pauseAlert() async {
     try {
+      print("Stop");
       // Load the audio file from assets
       await assetsAudioPlayer.stop();
     } catch (e) {
@@ -102,6 +127,12 @@ class _PatientScreenState extends State<PatientScreen> {
           if (data!.value != null) {
             Object? state =
                 snapshot.data!.child('CurrentState').child('state').value;
+            Object? front =
+                snapshot.data!.child('CurrentState').child('distance').value;
+            Object? right =
+                snapshot.data!.child('CurrentState').child('distance2').value;
+            Object? left =
+                snapshot.data!.child('CurrentState').child('distance3').value;
             Object? getLocation =
                 snapshot.data!.child('ButtonState').child('value').value;
             print(state);
@@ -115,8 +146,20 @@ class _PatientScreenState extends State<PatientScreen> {
               });
             }
 
-            if (state == 'stop_no_distance') {
-              playAlert();
+            if (front is int && front < 50) {
+              print("front");
+              //pauseAlert();
+              playFrontAlert();
+              ballEffectColor = Colors.red;
+            } else if (right is int && right < 50) {
+              print("right");
+              //pauseAlert();
+              playRightAlert();
+              ballEffectColor = Colors.red;
+            } else if (left is int && left < 50) {
+              print("left");
+              //pauseAlert();
+              playLeftAlert();
               ballEffectColor = Colors.red;
             } else {
               ballEffectColor = Colors.blue;
